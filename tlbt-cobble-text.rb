@@ -6,7 +6,6 @@
 ###   licensing: see file "UNLICENSE"
 
 require 'net/http'
-require 'json'
 
 page_urls = []
 pages = []
