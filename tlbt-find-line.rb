@@ -3,17 +3,17 @@
 ###     created: 2015-08-19 by waldrumpus
 ### description: Tingle's Love Balloon Trip line finder
 ###              finds text in game script and returns location info
-###       usage: tlbt-find-line.rb <game script file name> <search text>
+###       usage: tlbt-find-line.rb <game script file name> <search regexp>
 ###              Use tlbt-cobble-text.rb to create the game script file.
 ###   licensing: see file "UNLICENSE"
 
 if ARGV.length < 2
-  puts "usage: tlbt-find-line.rb <script file name> <text to find>"
+  puts "usage: tlbt-find-line.rb <script file name> <search regexp>"
   exit(1)
 end
 
 game_script_file = ARGV[0]
-text_to_find = ARGV[1]
+seach_regexp = Regexp.compile(ARGV[1])
 
 unless File.exists?(game_script_file)
   puts "file #{game_script_file} does not exist"
@@ -35,7 +35,7 @@ last_page_lines = [1000,
                    13043]
 
 script.lines.each_with_index do |line, line_index|
-  next unless line.include? text_to_find
+  next unless seach_regexp.match line
   
   page_number = last_page_lines.find_index {|ll| line_index < ll}
   
