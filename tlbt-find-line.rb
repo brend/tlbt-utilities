@@ -45,7 +45,7 @@ script.lines.each_with_index do |line, line_index|
   if page_number
     page_start_offset = (page_number > 0) ? (last_page_lines[page_number - 1]) : 0
     page_line_index = line_index - page_start_offset
-    puts "#{line_index}  #{page_number + 1}:#{page_line_index + 1}  #{line.encode('UTF-8')}"
+    puts "#{line_index + 1}  #{page_number + 1}:#{page_line_index + 1}  #{line.encode('UTF-8')}"
   else
     puts "error: invalid page number for line #{line_index}"
   end
